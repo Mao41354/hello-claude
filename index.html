@@ -6,7 +6,31 @@
 </head>
 <body style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; margin: 0;">
 <p>Welcome to my page!</p>
-<h1 style="font-size: 4rem; color: blue;">Hello, World!</h1>
+<h1 id="greeting" style="font-size: 4rem; color: blue;">Hello, World!</h1>
 <p>Mao &mdash; learning to build with Claude Code.</p>
+<button id="greetBtn" style="font-size: 1.2rem; padding: 0.5rem 1rem;">Say hi</button>
+<p id="clickCount">Clicked 0 times</p>
+
+<script>
+  var greetings = ["Hello, World!", "Hi there!", "Welcome back!", "Hey, glad you're here!", "Nice to see you again!"];
+  var clickCount = 0;
+
+  var greetingEl = document.getElementById("greeting");
+  var clickCountEl = document.getElementById("clickCount");
+  var greetBtn = document.getElementById("greetBtn");
+
+  greetBtn.addEventListener("click", function () {
+    clickCount = clickCount + 1;
+
+    if (clickCount >= 3) {
+      greetingEl.textContent = "You really like clicking buttons!";
+    } else {
+      var randomIndex = Math.floor(Math.random() * greetings.length);
+      greetingEl.textContent = greetings[randomIndex];
+    }
+
+    clickCountEl.textContent = "Clicked " + clickCount + " times";
+  });
+</script>
 </body>
 </html>
